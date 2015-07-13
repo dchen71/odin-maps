@@ -1,4 +1,4 @@
-//Initiailzes infowindow
+//Initiailzes infowindow so it can be closed later
 var infowindow = new google.maps.InfoWindow({
 	content: ""
 })
@@ -12,12 +12,16 @@ function initialize() {
     mapTypeId:google.maps.MapTypeId.ROADMAP
   };
   var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+  
+  //Setups up preliminary marker
   var marker=new google.maps.Marker({
   	position: vegas,
   	draggable:true,
   	title:"Las Vegas"
   });
   marker.setMap(map);
+  
+  //Setups first infowindow
   var content = "Welcome to Las Vegas!"
   infowindow.setContent(content);
   infowindow.open(map,marker);
@@ -37,11 +41,12 @@ function placeMarker(position, map){
 	});
 	map.panTo(position);
 
+	//Updates the infowindow
 	var content = "Latitude: " + position.lat()+
   		'<br>Longitude: ' + position.lng(); 
   	infowindow.setContent(content);
   	infowindow.open(map,marker);
 }
 
-
+//Initializes map on page load
 google.maps.event.addDomListener(window, 'load', initialize);
