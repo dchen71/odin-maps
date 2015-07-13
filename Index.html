@@ -4,43 +4,18 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Home</title>
+    <title>Maps</title>
     <link href="Styles/style.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="Styles/bootstrap.min.css">
   </head>
   <body>
-  <div class="container-fluid text-center col-md-12">
-    <div class="col-md-4 col-md-offset-4 well">
-      <h1>OMDB Movie Search</h1>
-      <form>
-        <input type="text" name="movietitle" placeholder="Movie Title">
-        <input type="submit" value="Search">
-      </form>
-    </div>
-    <div class="loading">
-      
-    </div>
-    <div class="movie">
-      <img src="#">
-      <div class="info">
-        <p>Title</p>
-        <p>Year</p>
-        <p>Rating</p>
-        <p>Release Date</p>
-        <p>Runtime</p>
-        <p>Genre</p>
-        <p>Director</p>
-        <p>Writers</p>
-        <p>Actors</p>
-        <p>Plot</p>
-        <p>Language</p>
-        <p>Country</p>
-        <p>Metascore</p>
-      </div>
-    </div>
+  <div class="container">
+    <div id="googleMap"></div>  
   </div>
 
-  <script type="text/javascript" src="Scripts/ajax.js"></script>
+
+  <script src="http://maps.googleapis.com/maps/api/js"></script>
+  <script type="text/javascript" src="Scripts/maps.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script type="text/javascript" src="Scripts/bootstrap.min.js"></script>
 
