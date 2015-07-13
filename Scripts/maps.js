@@ -1,6 +1,11 @@
+//Initiailzes infowindow
+var infowindow = new google.maps.InfoWindow({
+	content: ""
+})
+
 //Initializes the google maps on id googleMap
 function initialize() {
-  var vegas = new google.maps.LatLng(36.114647, -115.172813);
+  const vegas = new google.maps.LatLng(36.114647, -115.172813);
   var mapProp = {
     center:vegas,
     zoom:10,
@@ -9,7 +14,34 @@ function initialize() {
   var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
   var marker=new google.maps.Marker({
   	position: vegas,
+  	draggable:true,
+  	title:"Las Vegas"
   });
   marker.setMap(map);
+  var content = "Welcome to Las Vegas!"
+  infowindow.setContent(content);
+  infowindow.open(map,marker);
+
+  //Listener to pick up clicks on the map and placemarker on click
+  google.maps.event.addListener(map, 'click', function(e){
+  	infowindow.close();
+  	placeMarker(e.latLng, map);
+  });
 }
+
+//Places a marker on that position on the map and pans o that as the center
+function placeMarker(position, map){
+	var marker= new google.maps.Marker({
+		position: position,
+		map: map
+	});
+	map.panTo(position);
+
+	var content = "Latitude: " + position.lat()+
+  		'<br>Longitude: ' + position.lng(); 
+  	infowindow.setContent(content);
+  	infowindow.open(map,marker);
+}
+
+
 google.maps.event.addDomListener(window, 'load', initialize);
