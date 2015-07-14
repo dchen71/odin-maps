@@ -48,9 +48,32 @@ function placeMarker(position, map){
   	infowindow.open(map,marker);
 }
 
+
+//Takes user input and places a marker
+var userInput = document.getElementById('submit')
+userInput.addEventListener('click', function(){
+  //Initialize the lat/long coords
+  var latitude = document.getElementById('latitude').value;
+  var longitude = document.getElementById('longitude').value;
+  const latlng = new google.maps.LatLng(latitude, longitude);
+
+  //Remakes the map
+  var mapProp = {
+    center:latlng,
+    zoom:2,
+    mapTypeId:google.maps.MapTypeId.ROADMAP    
+  };
+
+  var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+
+  placeMarker(latlng, map);
+
+  //Listener to pick up clicks on the map and placemarker on click
+  google.maps.event.addListener(map, 'click', function(e){
+    infowindow.close();
+    placeMarker(e.latLng, map);
+  });
+});
+
 //Initializes map on page load
 google.maps.event.addDomListener(window, 'load', initialize);
-
-$('submit').onClick(function(){
-  placeMarker(position,map);
-});
