@@ -33,7 +33,7 @@ function initialize() {
   });
 }
 
-//Places a marker on that position on the map and pans o that as the center
+//Places a marker on that position on the map and pans to that as the center
 function placeMarker(position, map){
 	var marker= new google.maps.Marker({
 		position: position,
@@ -50,3 +50,7 @@ function placeMarker(position, map){
 
 //Initializes map on page load
 google.maps.event.addDomListener(window, 'load', initialize);
+
+$('submit').onClick(function(){
+  placeMarker(position,map);
+});
