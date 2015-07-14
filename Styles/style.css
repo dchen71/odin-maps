@@ -3,3 +3,6 @@
 	 height:480px;
 }
 
+input.error{
+	border-color: red;
+}

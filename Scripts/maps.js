@@ -81,7 +81,6 @@ function validate(){
 
       //Handler when submit form is valid
       submitHandler: function(form) {
-        
       },
 
        //Displays errors when form is invalid
