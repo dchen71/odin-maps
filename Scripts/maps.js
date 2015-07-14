@@ -75,5 +75,58 @@ userInput.addEventListener('click', function(){
   });
 });
 
+//Validations
+function validate(){
+  $('#mapform').validate({
+
+      //Handler when submit form is valid
+      submitHandler: function(form) {
+        
+      },
+
+       //Displays errors when form is invalid
+       invalidHandler: function( event, validator ) {
+         var errors = validator.numberOfInvalids();
+         if( errors ) {
+           var message = ( errors === 1 ) ? 'highlighted field'
+                                          : errors + ' highlighted fields';
+           $( '.submit-error' ).show().find( 'span' ).html( message );
+         }
+       },
+
+    //Rules for the elements
+    rules: {
+      latitude: {
+        required: true,
+        max: 90,
+        min: -90
+      },
+      longitude: {
+        required: true,
+        max: 180,
+        min: -180
+      }
+    },
+    //Error messages
+    messages:{
+      latitude: {
+        required: "Latitude cannot be blank",
+        max: "The max is 90",
+        min: "The min is -90"
+      },
+      longitude: {
+        required: "Longitude cannot be blank",
+        max: "The max is 180",
+        min: "The min is -180"
+      }
+    }
+  });
+};
+
+//Loads validate function when page loads
+$('document').ready(function(){
+  validate();
+});
+
 //Initializes map on page load
 google.maps.event.addDomListener(window, 'load', initialize);
