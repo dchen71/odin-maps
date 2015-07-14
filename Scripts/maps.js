@@ -51,6 +51,7 @@ $('document').ready(function(){
   validate();
 });
 
+
 //Initiailzes infowindow so it can be closed later
 var infowindow = new google.maps.InfoWindow({
   content: ""
@@ -104,7 +105,7 @@ function placeMarker(position, map){
 }
 
 
-//Takes user input and places a marker
+//Button click handler which adds markers based on coordates given
 var userInput = document.getElementById('submit')
 userInput.addEventListener('click', function(){
   //Initialize the lat/long coords
